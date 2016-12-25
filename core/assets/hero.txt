@@ -1,0 +1,33 @@
+hero.png
+size: 70, 84
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+player
+  rotate: false
+  xy: 1, 1
+  size: 24, 64
+  orig: 64, 64
+  offset: 19, 0
+  index: 1
+player
+  rotate: false
+  xy: 27, 1
+  size: 24, 64
+  orig: 64, 64
+  offset: 19, 0
+  index: 2
+player
+  rotate: false
+  xy: 53, 1
+  size: 16, 64
+  orig: 64, 64
+  offset: 23, 0
+  index: 3
+player
+  rotate: true
+  xy: 1, 67
+  size: 16, 64
+  orig: 64, 64
+  offset: 25, 0
+  index: 4
