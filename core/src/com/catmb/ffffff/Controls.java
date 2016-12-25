@@ -1,6 +1,5 @@
 package com.catmb.ffffff;
 
-
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 
@@ -15,16 +14,22 @@ public class Controls implements InputProcessor {
         return instance;
     }
 
+    private Hero hero = Hero.getInstance();
+
     @Override
     public boolean keyDown(int keycode) {
         switch(keycode) {
             case Input.Keys.W:
+                hero.rotate(1);
                 break;
             case Input.Keys.S:
+                hero.rotate(2);
                 break;
             case Input.Keys.A:
+                hero.rotate(3);
                 break;
             case Input.Keys.D:
+                hero.rotate(4);
                 break;
         }
         return false;
