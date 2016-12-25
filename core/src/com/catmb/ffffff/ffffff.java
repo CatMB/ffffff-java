@@ -10,11 +10,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class ffffff extends ApplicationAdapter implements InputProcessor {
 	SpriteBatch batch;
+	Controls control;
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		Gdx.input.setInputProcessor(this);
+		control = Controls.getInstance();
+		Gdx.input.setInputProcessor(control);
 	}
 
 	@Override
