@@ -20,16 +20,16 @@ public class Controls implements InputProcessor {
     public boolean keyDown(int keycode) {
         switch(keycode) {
             case Input.Keys.W:
-                hero.rotate(1);
-                break;
-            case Input.Keys.S:
                 hero.rotate(2);
                 break;
+            case Input.Keys.S:
+                hero.rotate(1);
+                break;
             case Input.Keys.A:
-                hero.rotate(3);
+                hero.rotate(4);
                 break;
             case Input.Keys.D:
-                hero.rotate(4);
+                hero.rotate(3);
                 break;
         }
         return false;
