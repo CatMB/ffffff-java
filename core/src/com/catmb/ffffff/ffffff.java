@@ -36,6 +36,7 @@ public class ffffff extends ApplicationAdapter implements InputProcessor {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 		//batch.draw(img, 0, 0);
+		Hero.getInstance().move();
 		batch.draw(Hero.getInstance().getSprite(), Hero.getInstance().x, Hero.getInstance().y);
 		batch.end();
 	}
