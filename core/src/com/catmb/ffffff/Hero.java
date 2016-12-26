@@ -13,6 +13,7 @@ public class Hero {
     protected Hero() {
         atlas = new TextureAtlas("hero.txt");
         sprites = atlas.createSprites();
+        rotationIterator = 0;
     }
     public static Hero getInstance() {
         if(instance == null) {
@@ -24,7 +25,6 @@ public class Hero {
         return sprites.get(rotationIterator);
     }
     public void rotate(int direction) {
-        // W - 1, S - 2, A - 3, D - 4
         rotationIterator = direction - 1;
     }
     public void move(int mx, int my) {
