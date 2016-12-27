@@ -8,7 +8,7 @@ public class Hero {
     private static Hero instance = null;
     protected TextureAtlas atlas;
     protected Array<Sprite> sprites;
-    private int rotationIterator, xm, ym, mm;
+    private int rotationIterator, xm, ym, mm, pressedKeysCount;
     protected int x, y;
     protected Hero() {
         atlas = new TextureAtlas("hero.txt");
@@ -17,6 +17,7 @@ public class Hero {
         xm = 0;
         ym = 0;
         mm = 1;
+        pressedKeysCount = 0;
     }
     public static Hero getInstance() {
         if(instance == null) {
@@ -33,6 +34,7 @@ public class Hero {
         rotationIterator = direction - 1;
     }
     public void startMove(int direction) {
+        pressedKeysCount++;
         switch (direction) {
             case 1:
                 xm = 0;
@@ -53,8 +55,11 @@ public class Hero {
         }
     }
     public void stopMove() {
-        xm = 0;
-        ym = 0;
+        pressedKeysCount--;
+        if(pressedKeysCount == 0) {
+            xm = 0;
+            ym = 0;
+        }
     }
     public void move() {
         x += xm;
