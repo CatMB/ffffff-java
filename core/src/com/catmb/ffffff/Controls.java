@@ -45,16 +45,16 @@ public class Controls implements InputProcessor {
     public boolean keyUp(int keycode) {
         switch (keycode) {
             case Input.Keys.W:
-                hero.stopMove();
+                hero.stopMove(2);
                 break;
             case Input.Keys.S:
-                hero.stopMove();
+                hero.stopMove(1);
                 break;
             case Input.Keys.A:
-                hero.stopMove();
+                hero.stopMove(4);
                 break;
             case Input.Keys.D:
-                hero.stopMove();
+                hero.stopMove(3);
                 break;
         }
         return true;

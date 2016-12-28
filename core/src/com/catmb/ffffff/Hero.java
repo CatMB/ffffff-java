@@ -8,16 +8,15 @@ public class Hero {
     private static Hero instance = null;
     protected TextureAtlas atlas;
     protected Array<Sprite> sprites;
-    private int rotationIterator, xm, ym, mm, pressedKeysCount;
+    private int rotationIterator, mm;
+    private boolean moveTask[];
     protected int x, y;
     protected Hero() {
         atlas = new TextureAtlas("hero.txt");
         sprites = atlas.createSprites();
         rotationIterator = 0;
-        xm = 0;
-        ym = 0;
-        mm = 1;
-        pressedKeysCount = 0;
+        mm = 2;
+        moveTask = new boolean[4];
     }
     public static Hero getInstance() {
         if(instance == null) {
@@ -34,35 +33,23 @@ public class Hero {
         rotationIterator = direction - 1;
     }
     public void startMove(int direction) {
-        pressedKeysCount++;
-        switch (direction) {
-            case 1:
-                xm = 0;
-                ym = -mm;
-                break;
-            case 2:
-                xm = 0;
-                ym = mm;
-                break;
-            case 3:
-                xm = mm;
-                ym = 0;
-                break;
-            case 4:
-                xm = -mm;
-                ym = 0;
-                break;
-        }
+        moveTask[direction - 1] = true;
     }
-    public void stopMove() {
-        pressedKeysCount--;
-        if(pressedKeysCount == 0) {
-            xm = 0;
-            ym = 0;
-        }
+    public void stopMove(int direction) {
+        moveTask[direction - 1] = false;
     }
     public void move() {
-        x += xm;
-        y += ym;
+        if(moveTask[0]) {
+            y -= mm;
+        }
+        if(moveTask[1]) {
+            y += mm;
+        }
+        if(moveTask[2]) {
+            x += mm;
+        }
+        if(moveTask[3]) {
+            x -= mm;
+        }
     }
 }
