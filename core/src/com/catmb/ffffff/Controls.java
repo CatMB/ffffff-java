@@ -16,6 +16,9 @@ public class Controls implements InputProcessor {
 
     private Hero hero = Hero.getInstance();
 
+    public boolean cl = false; //проверка камеры
+    public boolean cr = false; //проверка камеры
+
     @Override
     public boolean keyDown(int keycode) {
         switch(keycode) {
@@ -30,6 +33,14 @@ public class Controls implements InputProcessor {
                 break;
             case Input.Keys.D:
                 hero.rotate(4);
+                break;
+            case Input.Keys.E://проверка камеры
+                cr = true;
+                cl = false;
+                break;
+            case Input.Keys.Q://проверка камеры
+                cl = true;
+                cr = false;
                 break;
         }
         return false;
@@ -69,4 +80,7 @@ public class Controls implements InputProcessor {
     public boolean scrolled(int amount) {
         return false;
     }
+
+
+
 }
