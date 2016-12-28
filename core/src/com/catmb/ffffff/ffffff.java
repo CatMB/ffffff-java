@@ -50,6 +50,8 @@ public class ffffff extends ApplicationAdapter{
 		{
 			level.render(camera);
 		}
+		Hero.getInstance().move();
+		batch.draw(Hero.getInstance().getSprite(), Hero.getInstance().x, Hero.getInstance().y);
 		batch.end();
 	}
 

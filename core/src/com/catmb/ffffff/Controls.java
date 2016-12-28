@@ -5,7 +5,9 @@ import com.badlogic.gdx.InputProcessor;
 
 public class Controls implements InputProcessor {
     private static Controls instance = null;
+    private int movementSpeed;
     protected Controls() {
+        movementSpeed = 1;
     }
     public static Controls getInstance() {
         if(instance == null) {
@@ -23,16 +25,20 @@ public class Controls implements InputProcessor {
     public boolean keyDown(int keycode) {
         switch(keycode) {
             case Input.Keys.W:
-                hero.rotate(1);
+                hero.rotate(2);
+                hero.startMove(2);
                 break;
             case Input.Keys.S:
-                hero.rotate(2);
+                hero.rotate(1);
+                hero.startMove(1);
                 break;
             case Input.Keys.A:
-                hero.rotate(3);
+                hero.rotate(4);
+                hero.startMove(4);
                 break;
             case Input.Keys.D:
-                hero.rotate(4);
+                hero.rotate(3);
+                hero.startMove(3);
                 break;
             case Input.Keys.E://проверка камеры
                 cr = true;
@@ -43,12 +49,26 @@ public class Controls implements InputProcessor {
                 cr = false;
                 break;
         }
-        return false;
+        return true;
     }
 
     @Override
     public boolean keyUp(int keycode) {
-        return false;
+        switch (keycode) {
+            case Input.Keys.W:
+                hero.stopMove(2);
+                break;
+            case Input.Keys.S:
+                hero.stopMove(1);
+                break;
+            case Input.Keys.A:
+                hero.stopMove(4);
+                break;
+            case Input.Keys.D:
+                hero.stopMove(3);
+                break;
+        }
+        return true;
     }
 
     @Override
