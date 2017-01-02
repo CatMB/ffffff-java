@@ -33,7 +33,7 @@ public class ffffff extends ApplicationAdapter{
 		camera = new OrthographicCamera(400, 300);
 		camera.position.set(new Vector3(200, 150, 0));
 		camera.update();
-		level = new Level();
+		level = new Level("level/1.tmx");
 
 	}
 
