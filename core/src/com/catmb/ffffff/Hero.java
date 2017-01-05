@@ -1,6 +1,7 @@
 package com.catmb.ffffff;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 
@@ -51,5 +52,8 @@ public class Hero {
         if(moveTask[3]) {
             x -= mm;
         }
+    }
+    public void render(SpriteBatch batch) {
+        batch.draw(getSprite(), x, y);
     }
 }

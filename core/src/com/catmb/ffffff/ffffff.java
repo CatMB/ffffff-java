@@ -18,15 +18,13 @@ public class ffffff extends ApplicationAdapter{
 
 	Level level;
 	OrthographicCamera camera;
+	Hero hero;
 
-
-
-	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		control = Controls.getInstance();
-
+		hero = Hero.getInstance();
 
 		Gdx.input.setInputProcessor(control);
 
@@ -50,8 +48,8 @@ public class ffffff extends ApplicationAdapter{
 		{
 			level.render(camera);
 		}
-		Hero.getInstance().move();
-		batch.draw(Hero.getInstance().getSprite(), Hero.getInstance().x, Hero.getInstance().y);
+		hero.move();
+		hero.render(batch);
 		batch.end();
 	}
 
