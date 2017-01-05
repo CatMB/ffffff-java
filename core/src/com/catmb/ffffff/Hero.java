@@ -53,4 +53,7 @@ public class Hero {
             x -= mm;
         }
     }
+    public void render(SpriteBatch batch) {
+        batch.draw(getSprite(), x, y);
+    }
 }
