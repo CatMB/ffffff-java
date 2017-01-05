@@ -29,8 +29,8 @@ public class ffffff extends ApplicationAdapter{
 		roomIterator = 0;
 		Gdx.input.setInputProcessor(control);
 
-		camera = new OrthographicCamera(400, 300);
-		camera.position.set(new Vector3(200, 150, 0));
+		camera = new OrthographicCamera(800, 600);
+		camera.position.set(new Vector3(400, 150, 0));
 		camera.update();
 		room = new Room("level/1.tmx");
 		rooms = new ArrayList<Room>();
@@ -47,19 +47,17 @@ public class ffffff extends ApplicationAdapter{
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		level.render(camera);
-
+        rooms.get(roomIterator).render(camera);
 		batch.begin();
 		{
-			rooms.get(roomIterator).render(camera);
+            hero.render(batch);
 		}
-		hero.move();
-		hero.render(batch);
 		batch.end();
 	}
 
 	public void update(float dt){
 		camera.update();
+        hero.move();
 		Hero.getInstance().move();
 		if(control.cl) camera.translate(-1, 0);
 		if(control.cr) camera.translate(1, 0);
