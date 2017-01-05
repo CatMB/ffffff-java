@@ -12,12 +12,12 @@ import java.awt.*;
 /**
  * Created by youngsenpai on 12/26/16.
  */
-public class Level {
+public class Room {
 
     TiledMap tiledMap;
     TiledMapRenderer tiledMapRenderer;
 
-    public Level(String path) {
+    public Room(String path) {
         tiledMap = new TmxMapLoader().load(path);
         tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
     }

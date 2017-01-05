@@ -1,40 +1,40 @@
 package com.catmb.ffffff;
 
 import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector3;
 
+import java.util.ArrayList;
+
 public class ffffff extends ApplicationAdapter{
 	SpriteBatch batch;
 	Controls control;
-
-	Level level;
+	ArrayList<Room> rooms;
+	Room room;
 	OrthographicCamera camera;
 	Hero hero;
+	int roomIterator;
 
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		control = Controls.getInstance();
 		hero = Hero.getInstance();
-
+		roomIterator = 0;
 		Gdx.input.setInputProcessor(control);
 
 		camera = new OrthographicCamera(400, 300);
 		camera.position.set(new Vector3(200, 150, 0));
 		camera.update();
-		level = new Level("level/1.tmx");
-
-
+		room = new Room("level/1.tmx");
+		rooms = new ArrayList<Room>();
+		rooms.add(room);
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class ffffff extends ApplicationAdapter{
 
 		batch.begin();
 		{
-			batch.draw(Hero.getInstance().getSprite(), Hero.getInstance().x, Hero.getInstance().y);
+			rooms.get(roomIterator).render(camera);
 		}
 		hero.move();
 		hero.render(batch);
@@ -68,6 +68,6 @@ public class ffffff extends ApplicationAdapter{
 	@Override
 	public void dispose () {
 		batch.dispose();
-		level.dispose();
+		room.dispose();
 	}
 }
