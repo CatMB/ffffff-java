@@ -1,7 +1,6 @@
 package com.catmb.ffffff;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
@@ -13,13 +12,13 @@ import java.awt.*;
 /**
  * Created by youngsenpai on 12/26/16.
  */
-public class Level{
+public class Room {
 
     TiledMap tiledMap;
     TiledMapRenderer tiledMapRenderer;
 
-    public Level(){
-        tiledMap = new TmxMapLoader().load("level/1.tmx");
+    public Room(String path) {
+        tiledMap = new TmxMapLoader().load(path);
         tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
     }
 
